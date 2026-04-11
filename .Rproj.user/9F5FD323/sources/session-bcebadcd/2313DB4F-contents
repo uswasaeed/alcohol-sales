@@ -1,0 +1,81 @@
+---
+title: "Cleaning Data"
+format: html
+---
+
+## Setup
+
+Setting up the libraries.
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(lubridate)
+library(janitor)
+library(readr)
+```
+
+## Import
+
+Importing the raw beverage data.
+
+```{r}
+bev_raw <- read_csv("data-original/bev-raw.csv")
+
+bev_raw |> head()
+```
+
+## Cleaning columns
+
+Selecting the columns relevant to analysis.
+
+```{r}
+bev_col <- bev_raw |>
+  select(
+    `Taxpayer Number`,
+    `Location Number`,
+    `Location Name`,
+    `Location Address`,
+    `Location City`,
+    `Location Zip`,
+    `Obligation End Date`,
+    `Beer Receipts`,
+    `Wine Receipts`,
+    `Liquor Receipts`,
+    `Total Receipts`
+  ) |>
+  clean_names()
+
+bev_col
+```
+
+## Convert data types
+
+Fixing the data types.
+
+```{r}
+bev_clean <- bev_col |>
+  mutate(
+    date = mdy(obligation_end_date),
+    year = year(date),
+    location_zip = as.character(location_zip),
+    beer_receipts = as.numeric(gsub("[,$]", "", beer_receipts)),
+    wine_receipts = as.numeric(gsub("[,$]", "", wine_receipts)),
+    liquor_receipts = as.numeric(gsub("[,$]", "", liquor_receipts)),
+    total_receipts = as.numeric(gsub("[,$]", "", total_receipts))
+  )
+
+bev_clean
+```
+
+## Export
+
+Export the cleaned dataset.
+
+```{r}
+write_rds(bev_clean, "data-processed/bev_clean.rds")
+```
+
