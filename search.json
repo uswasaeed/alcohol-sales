@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "01-cleaning.html",
+    "href": "01-cleaning.html",
+    "title": "Cleaning Data",
+    "section": "",
+    "text": "Setting up the libraries.\n\nlibrary(tidyverse)\nlibrary(lubridate)\nlibrary(janitor)\nlibrary(readr)"
+  },
+  {
+    "objectID": "01-cleaning.html#setup",
+    "href": "01-cleaning.html#setup",
+    "title": "Cleaning Data",
+    "section": "",
+    "text": "Setting up the libraries.\n\nlibrary(tidyverse)\nlibrary(lubridate)\nlibrary(janitor)\nlibrary(readr)"
+  },
+  {
+    "objectID": "01-cleaning.html#import",
+    "href": "01-cleaning.html#import",
+    "title": "Cleaning Data",
+    "section": "Import",
+    "text": "Import\nImporting the raw beverage data.\n\nbev_raw &lt;- read_csv(\"data-original/bev-raw.csv\")\n\nRows: 110454 Columns: 24\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (19): Taxpayer Name, Taxpayer Address, Taxpayer City, Taxpayer State, Ta...\ndbl  (5): Taxpayer Number, Taxpayer County, Location Number, Location Zip, L...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nbev_raw |&gt; head()\n\n# A tibble: 6 × 24\n  `Taxpayer Number` `Taxpayer Name`           `Taxpayer Address` `Taxpayer City`\n              &lt;dbl&gt; &lt;chr&gt;                     &lt;chr&gt;              &lt;chr&gt;          \n1       32074602080 JMOT LLC                  3403 S LAMAR BLVD  AUSTIN         \n2       32058372064 EL BORREGO DE ORO, LLC    3900 S CONGRESS A… AUSTIN         \n3       32039685030 WL STAR BAR, L.L.C.       600 W 6TH ST       AUSTIN         \n4       32060904094 TENTEN HOLDINGS, LLC      512 RIO GRANDE ST  AUSTIN         \n5       17413136338 FAMILY SPORTS, INC.       2701 W WILLIAM CA… AUSTIN         \n6       32065141999 6TH STREET BUSINESS PART… 1211 MOUNTAIN VIE… SAN MARCOS     \n# ℹ 20 more variables: `Taxpayer State` &lt;chr&gt;, `Taxpayer Zip` &lt;chr&gt;,\n#   `Taxpayer County` &lt;dbl&gt;, `Location Number` &lt;dbl&gt;, `Location Name` &lt;chr&gt;,\n#   `Location Address` &lt;chr&gt;, `Location City` &lt;chr&gt;, `Location State` &lt;chr&gt;,\n#   `Location Zip` &lt;dbl&gt;, `Location County` &lt;dbl&gt;,\n#   `Inside/Outside City Limits` &lt;chr&gt;, `TABC Permit Number` &lt;chr&gt;,\n#   `Responsibility Begin Date` &lt;chr&gt;, `Responsibility End Date` &lt;chr&gt;,\n#   `Obligation End Date` &lt;chr&gt;, `Liquor Receipts` &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "01-cleaning.html#cleaning-columns",
+    "href": "01-cleaning.html#cleaning-columns",
+    "title": "Cleaning Data",
+    "section": "Cleaning columns",
+    "text": "Cleaning columns\nSelecting the columns relevant to analysis.\n\nbev_col &lt;- bev_raw |&gt;\n  select(\n    `Taxpayer Number`,\n    `Location Number`,\n    `Location Name`,\n    `Location Address`,\n    `Location City`,\n    `Location Zip`,\n    `Obligation End Date`,\n    `Beer Receipts`,\n    `Wine Receipts`,\n    `Liquor Receipts`,\n    `Total Receipts`\n  ) |&gt;\n  clean_names()\n\nbev_col\n\n# A tibble: 110,454 × 11\n   taxpayer_number location_number location_name  location_address location_city\n             &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;            &lt;chr&gt;        \n 1     32074602080               2 FIG ITALIAN K… 3403 S LAMAR BL… AUSTIN       \n 2     32058372064               1 EL BORREGO DE… 3900 S CONGRESS… AUSTIN       \n 3     32039685030               1 STAR BAR       600 W 6TH ST     AUSTIN       \n 4     32060904094               1 TENTEN AUSTIN  501 W 6TH ST ST… AUSTIN       \n 5     17413136338               2 HIGHLAND LANES 8909 BURNET RD   AUSTIN       \n 6     32065141999               1 SOHO LOUNGE    217 E 6TH ST     AUSTIN       \n 7     17427121425               1 CASINO EL CAM… 517 E 6TH ST     AUSTIN       \n 8     32045895235               1 EL COCKFIGHT   121 E 5TH ST     AUSTIN       \n 9     32045024711               2 HANK'S         5811 BERKMAN DR… AUSTIN       \n10     32052333385               1 WHISKEY TANGO… 701 W 6TH ST     AUSTIN       \n# ℹ 110,444 more rows\n# ℹ 6 more variables: location_zip &lt;dbl&gt;, obligation_end_date &lt;chr&gt;,\n#   beer_receipts &lt;chr&gt;, wine_receipts &lt;chr&gt;, liquor_receipts &lt;chr&gt;,\n#   total_receipts &lt;chr&gt;"
+  },
+  {
+    "objectID": "01-cleaning.html#convert-data-types",
+    "href": "01-cleaning.html#convert-data-types",
+    "title": "Cleaning Data",
+    "section": "Convert data types",
+    "text": "Convert data types\nFixing the data types.\n\nbev_clean &lt;- bev_col |&gt;\n  mutate(\n    date = mdy(obligation_end_date),\n    year = year(date),\n    location_zip = as.character(location_zip),\n    beer_receipts = as.numeric(gsub(\"[,$]\", \"\", beer_receipts)),\n    wine_receipts = as.numeric(gsub(\"[,$]\", \"\", wine_receipts)),\n    liquor_receipts = as.numeric(gsub(\"[,$]\", \"\", liquor_receipts)),\n    total_receipts = as.numeric(gsub(\"[,$]\", \"\", total_receipts))\n  )\n\nbev_clean\n\n# A tibble: 110,454 × 13\n   taxpayer_number location_number location_name  location_address location_city\n             &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;            &lt;chr&gt;        \n 1     32074602080               2 FIG ITALIAN K… 3403 S LAMAR BL… AUSTIN       \n 2     32058372064               1 EL BORREGO DE… 3900 S CONGRESS… AUSTIN       \n 3     32039685030               1 STAR BAR       600 W 6TH ST     AUSTIN       \n 4     32060904094               1 TENTEN AUSTIN  501 W 6TH ST ST… AUSTIN       \n 5     17413136338               2 HIGHLAND LANES 8909 BURNET RD   AUSTIN       \n 6     32065141999               1 SOHO LOUNGE    217 E 6TH ST     AUSTIN       \n 7     17427121425               1 CASINO EL CAM… 517 E 6TH ST     AUSTIN       \n 8     32045895235               1 EL COCKFIGHT   121 E 5TH ST     AUSTIN       \n 9     32045024711               2 HANK'S         5811 BERKMAN DR… AUSTIN       \n10     32052333385               1 WHISKEY TANGO… 701 W 6TH ST     AUSTIN       \n# ℹ 110,444 more rows\n# ℹ 8 more variables: location_zip &lt;chr&gt;, obligation_end_date &lt;chr&gt;,\n#   beer_receipts &lt;dbl&gt;, wine_receipts &lt;dbl&gt;, liquor_receipts &lt;dbl&gt;,\n#   total_receipts &lt;dbl&gt;, date &lt;date&gt;, year &lt;dbl&gt;"
+  },
+  {
+    "objectID": "01-cleaning.html#export",
+    "href": "01-cleaning.html#export",
+    "title": "Cleaning Data",
+    "section": "Export",
+    "text": "Export\nExport the cleaned dataset.\n\nwrite_rds(bev_clean, \"data-processed/bev_clean.rds\")"
+  },
+  {
+    "objectID": "02-analysis.html",
+    "href": "02-analysis.html",
+    "title": "Data Analysis",
+    "section": "",
+    "text": "This notebook analyzes alcohol sales trends in Austin after COVID-19, specifically looking at recovery patterns across locations and drink types."
+  },
+  {
+    "objectID": "02-analysis.html#goal-of-this-notebook",
+    "href": "02-analysis.html#goal-of-this-notebook",
+    "title": "Data Analysis",
+    "section": "",
+    "text": "This notebook analyzes alcohol sales trends in Austin after COVID-19, specifically looking at recovery patterns across locations and drink types."
+  },
+  {
+    "objectID": "02-analysis.html#setup",
+    "href": "02-analysis.html#setup",
+    "title": "Data Analysis",
+    "section": "Setup",
+    "text": "Setup\nSetting up the libraries.\n\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(lubridate)\nlibrary(readr)"
+  },
+  {
+    "objectID": "02-analysis.html#import",
+    "href": "02-analysis.html#import",
+    "title": "Data Analysis",
+    "section": "Import",
+    "text": "Import\nImporting the data.\n\nbev_clean &lt;- read_rds(\"data-processed/bev_clean.rds\")\n\nbev_clean |&gt; glimpse()\n\nRows: 110,454\nColumns: 13\n$ taxpayer_number     &lt;dbl&gt; 32074602080, 32058372064, 32039685030, 32060904094…\n$ location_number     &lt;dbl&gt; 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 6,…\n$ location_name       &lt;chr&gt; \"FIG ITALIAN KITCHEN & BAR\", \"EL BORREGO DE ORO #2…\n$ location_address    &lt;chr&gt; \"3403 S LAMAR BLVD\", \"3900 S CONGRESS AVE\", \"600 W…\n$ location_city       &lt;chr&gt; \"AUSTIN\", \"AUSTIN\", \"AUSTIN\", \"AUSTIN\", \"AUSTIN\", …\n$ location_zip        &lt;chr&gt; \"78704\", \"78704\", \"78701\", \"78701\", \"78757\", \"7870…\n$ obligation_end_date &lt;chr&gt; \"02/28/2025\", \"08/31/2019\", \"08/31/2019\", \"01/31/2…\n$ beer_receipts       &lt;dbl&gt; 1693, 3719, 36461, 3195, 40985, 2236, 33655, 52123…\n$ wine_receipts       &lt;dbl&gt; 20051, 0, 1979, 34610, 955, 46, 572, 1252, 23573, …\n$ liquor_receipts     &lt;dbl&gt; 22484, 3324, 57536, 35612, 23758, 21700, 31245, 10…\n$ total_receipts      &lt;dbl&gt; 44228, 7043, 95976, 74145, 65698, 23982, 65472, 15…\n$ date                &lt;date&gt; 2025-02-28, 2019-08-31, 2019-08-31, 2020-01-31, 2…\n$ year                &lt;dbl&gt; 2025, 2019, 2019, 2020, 2022, 2024, 2019, 2019, 20…"
+  },
+  {
+    "objectID": "02-analysis.html#overall-sales-trend-over-time",
+    "href": "02-analysis.html#overall-sales-trend-over-time",
+    "title": "Data Analysis",
+    "section": "Overall sales trend over time",
+    "text": "Overall sales trend over time\nExploring how total alcohol sales in Austin changed over time, specifically before and after COVID-19.\n\nannual_sales &lt;- bev_clean |&gt;\n  filter(year != 2026) |&gt;\n  group_by(year) |&gt;\n  summarize(\n    total_sales = sum(total_receipts, na.rm = TRUE)\n  ) |&gt;\n  arrange(year)\n\nannual_sales\n\n# A tibble: 7 × 2\n   year total_sales\n  &lt;dbl&gt;       &lt;dbl&gt;\n1  2019   882805713\n2  2020   425970744\n3  2021   858982905\n4  2022  1137123564\n5  2023  1180243932\n6  2024  1154925774\n7  2025  1143640701\n\n\nData Takeaway: Alcohol sales in Austin dropped sharply during the COVID-19 pandemic, falling from about $883 million in 2019 to $426 million in 2020, a decline of more than half. Sales rebounded in 2021 to roughly $859 million, nearly returning to pre-pandemic levels. In the years that followed, total sales continued to grow, surpassing pre-COVID figures and reaching about $1.14 billion in 2025, the highest in the dataset."
+  },
+  {
+    "objectID": "02-analysis.html#monthly-trend-around-covid",
+    "href": "02-analysis.html#monthly-trend-around-covid",
+    "title": "Data Analysis",
+    "section": "Monthly trend around COVID",
+    "text": "Monthly trend around COVID\nComparing monthly revenue trends before, during and after the pandemic.\n\nmonthly_sales &lt;- bev_clean |&gt;\n  filter(year != 2026) |&gt;\n  group_by(year, month = month(date)) |&gt;\n  summarize(\n    total_sales = sum(total_receipts, na.rm = TRUE)\n  ) |&gt;\n  arrange(year, month)\n\n`summarise()` has grouped output by 'year'. You can override using the\n`.groups` argument.\n\nmonthly_sales\n\n# A tibble: 84 × 3\n# Groups:   year [7]\n    year month total_sales\n   &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;\n 1  2019     1    60391011\n 2  2019     2    65586510\n 3  2019     3    88690780\n 4  2019     4    73777549\n 5  2019     5    79687235\n 6  2019     6    72620588\n 7  2019     7    67900581\n 8  2019     8    73205084\n 9  2019     9    77108860\n10  2019    10    75978950\n# ℹ 74 more rows\n\n\nData Takeaway: Monthly alcohol sales in Austin followed a stable pattern in 2019, ranging from about $60 million to $89 million per month. In 2020, sales dropped sharply beginning in March, falling to just around $2.7 million in April, the lowest point in the dataset. Sales gradually recovered throughout the year and returned to more typical levels by late 2020. By 2021 and 2022, monthly sales had fully rebounded, with the highest months reaching over $100 million, and remained strong through 2025."
+  },
+  {
+    "objectID": "02-analysis.html#zip-code-differences",
+    "href": "02-analysis.html#zip-code-differences",
+    "title": "Data Analysis",
+    "section": "Zip code differences",
+    "text": "Zip code differences\nRecovery comparison by ZIP code, using 2019 as a baseline before, 2020 as sales drop baseline and 2025 as the recovery baseline.\n\nzip_summary &lt;- bev_clean |&gt;\n  filter(year != 2026) |&gt;\n  group_by(location_zip, year) |&gt;\n  summarize(total_sales = sum(total_receipts, na.rm = TRUE)) |&gt;\n  group_by(location_zip) |&gt;\n  summarize(\n    sales_2019 = total_sales[year == 2019],\n    sales_2020 = total_sales[year == 2020],\n    sales_2025 = total_sales[year == 2025],\n    recovery_2025 = sales_2025 / sales_2019,\n    covid_drop = sales_2020 / sales_2019\n  ) |&gt;\n  arrange(desc(recovery_2025))\n\n`summarise()` has grouped output by 'location_zip'. You can override using the\n`.groups` argument.\n\n\nWarning: Returning more (or less) than 1 row per `summarise()` group was deprecated in\ndplyr 1.1.0.\nℹ Please use `reframe()` instead.\nℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`\n  always returns an ungrouped data frame and adjust accordingly.\n\n\n`summarise()` has grouped output by 'location_zip'. You can override using the\n`.groups` argument.\n\nzip_summary\n\n# A tibble: 44 × 6\n# Groups:   location_zip [44]\n   location_zip sales_2019 sales_2020 sales_2025 recovery_2025 covid_drop\n   &lt;chr&gt;             &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;\n 1 78733             42533     257062     786527         18.5       6.04 \n 2 78754            154830      67263    1843223         11.9       0.434\n 3 78730           1015002     986913    3386771          3.34      0.972\n 4 78724            518464     103288    1580247          3.05      0.199\n 5 78736            747571     466745    1989764          2.66      0.624\n 6 78731           4278829    2173903   11298515          2.64      0.508\n 7 78747            440009     507202    1116377          2.54      1.15 \n 8 78739            305648     274723     730659          2.39      0.899\n 9 78702          59036968   27214998  131870040          2.23      0.461\n10 78719          12085105    4535037   25146256          2.08      0.375\n# ℹ 34 more rows\n\n\nData Takeaway: Alcohol sales recovery after COVID-19 varied across Austin-area ZIP codes. Some areas more than fully rebounded by 2025, with ZIP code 78733 reaching more than 18 times its 2019 sales level, while others remained below pre-pandemic levels. Overall, most ZIP codes exceeded their 2019 baseline, but recovery was uneven across the city.\nDowntown and core Austin ZIP codes such as 78701 recovered more slowly, reaching about 1.1 times their 2019 sales level by 2025 after a sharp decline in 2020. In contrast, several suburban ZIP codes saw much stronger growth, including 78733 and 78754, which experienced some of the highest recovery rates in the dataset. A small number of ZIP codes, including 78757 and 78750, remained slightly below their pre-COVID levels by 2025, suggesting slower long-term recovery in parts of North and Northwest Austin.\nnote to self: ask prof if this is too long? feels like i got good data from here but #idk"
+  },
+  {
+    "objectID": "02-analysis.html#establishment-recovery",
+    "href": "02-analysis.html#establishment-recovery",
+    "title": "Data Analysis",
+    "section": "Establishment recovery",
+    "text": "Establishment recovery\nSeeing which establishments recovered the best.\n\ntop_locations &lt;- bev_clean |&gt;\n  filter(year != 2026) |&gt;\n  group_by(location_name, location_address, year) |&gt;\n  summarize(\n    total_sales = sum(total_receipts, na.rm = TRUE),\n  )\n\n`summarise()` has grouped output by 'location_name', 'location_address'. You\ncan override using the `.groups` argument.\n\nlocation_summary &lt;- top_locations |&gt;\n  group_by(location_name, location_address) |&gt;\n  summarize(\n    sales_2019 = total_sales[year == 2019],\n    sales_2020 = total_sales[year == 2020],\n    sales_2025 = total_sales[year == 2025],\n    .groups = \"drop\"\n  ) |&gt;\n  filter(\n    !is.na(sales_2019),\n    sales_2019 &gt; 0,\n    !is.na(sales_2025)\n  ) |&gt;\n  mutate(\n    recovery_2025 = sales_2025 / sales_2019,\n    covid_drop = sales_2020 / sales_2019\n  )\n\nWarning: Returning more (or less) than 1 row per `summarise()` group was deprecated in\ndplyr 1.1.0.\nℹ Please use `reframe()` instead.\nℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`\n  always returns an ungrouped data frame and adjust accordingly.\n\nlocation_summary |&gt;\n  arrange(desc(recovery_2025)) |&gt;\n  head(10)\n\n# A tibble: 10 × 7\n   location_name location_address sales_2019 sales_2020 sales_2025 recovery_2025\n   &lt;chr&gt;         &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;\n 1 RED ROSE      3615 S CONGRESS…       1597     917353    2275657        1425. \n 2 MARAVILLA AT… 11001 AUSTIN LN          80       3395      27764         347. \n 3 THE COUNTER … 603 W 29TH ST           260      20148      37487         144. \n 4 PROPER HOTEL  600 W 2ND ST         103809    1968918   10756819         104. \n 5 ALOFT AUSTIN… 8000 E BEN WHIT…       2288      29162     225589          98.6\n 6 THE SILVER M… 7100 E HIGHWAY …       6790     122731     385332          56.7\n 7 MALA VIDA     708 E 6TH ST          69377     501150    3361561          48.5\n 8 DOS SALSAS D… 11301 BURNET RD…      31026     969032    1119974          36.1\n 9 24 DINER      3600 PRESIDENTI…      43266     523066    1275869          29.5\n10 1618 ASIAN F… 1620 E RIVERSID…      48896     277705    1254311          25.7\n# ℹ 1 more variable: covid_drop &lt;dbl&gt;\n\n\nData Takeaway: Austin’s highest-grossing alcohol establishments showed different recovery patterns after the COVID-19 pandemic. Several places rebounded strongly by 2025 and even exceeded their pre-pandemic levels. Proper Hotel rose from about $104,000 in 2019 to $10.8 million in 2025, while Scoot Inn Concession Company increased from roughly $807,000 to $14.9 million over the same period.\nOther venues saw more moderate but still strong growth, including Mala Vida, which grew from about $69,000 to $3.36 million, and Aloft Austin Airport, which increased from about $2,300 to $225,000. In contrast, established venues such as Fairmont Austin Hotel and Buford’s recovered more slowly and remained closer to or below their 2019 levels by 2025."
+  },
+  {
+    "objectID": "02-analysis.html#alcohol-types-over-time",
+    "href": "02-analysis.html#alcohol-types-over-time",
+    "title": "Data Analysis",
+    "section": "Alcohol types over time",
+    "text": "Alcohol types over time\nComparison of beer, wine, and liquor sales using 2019 as a baseline before, 2020 as sales drop baseline and 2025 as the recovery baseline.\n\ndrink_trends &lt;- bev_clean |&gt;\n  filter(year != 2026) |&gt;\n  group_by(year) |&gt;\n  summarize(\n    beer = sum(beer_receipts, na.rm = TRUE),\n    wine = sum(wine_receipts, na.rm = TRUE),\n    liquor = sum(liquor_receipts, na.rm = TRUE)\n  )\n\ndrink_trends\n\n# A tibble: 7 × 4\n   year      beer      wine    liquor\n  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1  2019 227256019 142754707 510077953\n2  2020  96370482  67906971 260427020\n3  2021 188500896 119350228 548370408\n4  2022 253704639 156698765 715143266\n5  2023 269912334 158425895 745801387\n6  2024 270134398 152443541 725645363\n7  2025 267447638 156026067 711759279\n\n\nData Takeaway: All three alcohols dropped sharply in 2020, but recovered by 2021 and continued to grow through 2025. Beer and liquor showed the strongest post-COVID growth, while wine remained the smallest and most stable category over time.\nnote to self: is this worth it to include? no strong conclusions that i can tie back to my original question"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Alcohol Sales After COVID-19",
+    "section": "",
+    "text": "Alcohol sales at Austin bars and restaurants fell sharply during the COVID-19 pandemic in 2020, but recovery has varied across neighborhoods and drink types. Using state tax data, this project examines how sales changed over time, which areas rebounded fastest, and how consumer spending shifted across beer, wine and liquor.\nThis final project works to answer the question: How did COVID-19 affect alcohol sales in Austin, and how did recovery vary by area?"
+  },
+  {
+    "objectID": "index.html#project-description",
+    "href": "index.html#project-description",
+    "title": "Alcohol Sales After COVID-19",
+    "section": "",
+    "text": "Alcohol sales at Austin bars and restaurants fell sharply during the COVID-19 pandemic in 2020, but recovery has varied across neighborhoods and drink types. Using state tax data, this project examines how sales changed over time, which areas rebounded fastest, and how consumer spending shifted across beer, wine and liquor.\nThis final project works to answer the question: How did COVID-19 affect alcohol sales in Austin, and how did recovery vary by area?"
+  },
+  {
+    "objectID": "index.html#source-description",
+    "href": "index.html#source-description",
+    "title": "Alcohol Sales After COVID-19",
+    "section": "Source description",
+    "text": "Source description\nDescribe source"
+  }
+]
