@@ -1,21 +1,21 @@
 project:
   type: website
+  render:
+  - "01*.qmd"
+  - "*.qmd"
 
 website:
-  title: "Alcohol Sales After COVID-19"
-  navbar:
-    left:
+  title: "Austin Alcohol Sales Project"
+  sidebar:
+    contents:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - auto: "*.qmd"
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: cosmo
     css: styles.css
     toc: true
-
-
-
+    df-print: paged
+    code-overflow: wrap

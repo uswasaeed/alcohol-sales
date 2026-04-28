@@ -66,7 +66,8 @@ bev_clean <- bev_col |>
     wine_receipts = as.numeric(gsub("[,$]", "", wine_receipts)),
     liquor_receipts = as.numeric(gsub("[,$]", "", liquor_receipts)),
     total_receipts = as.numeric(gsub("[,$]", "", total_receipts))
-  )
+  ) |>
+  filter(year != 2026)
 
 bev_clean
 ```
@@ -78,4 +79,6 @@ Export the cleaned dataset.
 ```{r}
 write_rds(bev_clean, "data-processed/bev_clean.rds")
 ```
+
+The use of gsub() in this notebook was informed by [this website](https://www.r-bloggers.com/2024/03/mastering-text-manipulation-in-r-a-guide-to-using-gsub-for-multiple-pattern-replacement/) after my code failed to run and I tried numerous methods to change my code. The original problem was different but I ended up forgetting to switch this back to parse_number(). 
 

@@ -40,7 +40,6 @@ Exploring how total alcohol sales in Austin changed over time, specifically befo
 
 ```{r}
 annual_sales <- bev_clean |>
-  filter(year != 2026) |>
   group_by(year) |>
   summarize(
     total_sales = sum(total_receipts, na.rm = TRUE)
@@ -52,13 +51,29 @@ annual_sales
 
 Data Takeaway: Alcohol sales in Austin dropped sharply during the COVID-19 pandemic, falling from about $883 million in 2019 to $426 million in 2020, a decline of more than half. Sales rebounded in 2021 to roughly $859 million, nearly returning to pre-pandemic levels. In the years that followed, total sales continued to grow, surpassing pre-COVID figures and reaching about $1.14 billion in 2025, the highest in the dataset.
 
+Plotting the alcohol sales over time.
+
+```{r}
+ggplot(
+  annual_sales,
+  aes(x = factor(year), y = total_sales)
+) +
+  geom_col(fill = "#264653") +
+  labs(
+    title = "Total Alcohol Sales in Austin by Year",
+    subtitle = "Sharp decline in 2020 followed by steady growth",
+    x = "Year",
+    y = "Total Receipts"
+  ) +
+  theme_minimal()
+```
+
 ## Monthly trend around COVID
 
 Comparing monthly revenue trends before, during and after the pandemic.
 
 ```{r}
 monthly_sales <- bev_clean |>
-  filter(year != 2026) |>
   group_by(year, month = month(date)) |>
   summarize(
     total_sales = sum(total_receipts, na.rm = TRUE)
@@ -68,82 +83,14 @@ monthly_sales <- bev_clean |>
 monthly_sales
 ```
 
-Data Takeaway: Monthly alcohol sales in Austin followed a stable  pattern in 2019, ranging from about $60 million to $89 million per month. In 2020, sales dropped sharply beginning in March, falling to just around $2.7 million in April, the lowest point in the dataset. Sales gradually recovered throughout the year and returned to more typical levels by late 2020. By 2021 and 2022, monthly sales had fully rebounded, with the highest months reaching over $100 million, and remained strong through 2025.
+Data Takeaway: Monthly alcohol sales in Austin followed a stable pattern in 2019, ranging from about $60 million to $89 million per month. In 2020, sales dropped sharply beginning in March, falling to just around $2.7 million in April, the lowest point in the dataset. Sales gradually recovered throughout the year and returned to more typical levels by late 2020. By 2021 and 2022, monthly sales had fully rebounded, with the highest months reaching over $100 million, and remained strong through 2025.
 
-## Zip code differences
+## Alcohol sales by type over time
 
-Recovery comparison by ZIP code, using 2019 as a baseline before, 2020 as sales drop baseline and 2025 as the recovery baseline.
-
-```{r}
-zip_summary <- bev_clean |>
-  filter(year != 2026) |>
-  group_by(location_zip, year) |>
-  summarize(total_sales = sum(total_receipts, na.rm = TRUE)) |>
-  group_by(location_zip) |>
-  summarize(
-    sales_2019 = total_sales[year == 2019],
-    sales_2020 = total_sales[year == 2020],
-    sales_2025 = total_sales[year == 2025],
-    recovery_2025 = sales_2025 / sales_2019,
-    covid_drop = sales_2020 / sales_2019
-  ) |>
-  arrange(desc(recovery_2025))
-
-zip_summary
-```
-
-Data Takeaway: Alcohol sales recovery after COVID-19 varied across Austin-area ZIP codes. Some areas more than fully rebounded by 2025, with ZIP code 78733 reaching more than 18 times its 2019 sales level, while others remained below pre-pandemic levels. Overall, most ZIP codes exceeded their 2019 baseline, but recovery was uneven across the city.
-
-Downtown and core Austin ZIP codes such as 78701 recovered more slowly, reaching about 1.1 times their 2019 sales level by 2025 after a sharp decline in 2020. In contrast, several suburban ZIP codes saw much stronger growth, including 78733 and 78754, which experienced some of the highest recovery rates in the dataset. A small number of ZIP codes, including 78757 and 78750, remained slightly below their pre-COVID levels by 2025, suggesting slower long-term recovery in parts of North and Northwest Austin.
-
-note to self: ask prof if this is too long? feels like i got good data from here but #idk
-
-## Establishment recovery
-
-Seeing which establishments recovered the best.
-
-```{r}
-top_locations <- bev_clean |>
-  filter(year != 2026) |>
-  group_by(location_name, location_address, year) |>
-  summarize(
-    total_sales = sum(total_receipts, na.rm = TRUE),
-  )
-
-location_summary <- top_locations |>
-  group_by(location_name, location_address) |>
-  summarize(
-    sales_2019 = total_sales[year == 2019],
-    sales_2020 = total_sales[year == 2020],
-    sales_2025 = total_sales[year == 2025],
-    .groups = "drop"
-  ) |>
-  filter(
-    !is.na(sales_2019),
-    sales_2019 > 0,
-    !is.na(sales_2025)
-  ) |>
-  mutate(
-    recovery_2025 = sales_2025 / sales_2019,
-    covid_drop = sales_2020 / sales_2019
-  )
-
-location_summary |>
-  arrange(desc(recovery_2025)) |>
-  head(10)
-```
-
-Data Takeaway: Austin’s highest-grossing alcohol establishments showed different recovery patterns after the COVID-19 pandemic. Several places rebounded strongly by 2025 and even exceeded their pre-pandemic levels. Proper Hotel rose from about $104,000 in 2019 to $10.8 million in 2025, while Scoot Inn Concession Company increased from roughly $807,000 to $14.9 million over the same period.
-
-Other venues saw more moderate but still strong growth, including Mala Vida, which grew from about $69,000 to $3.36 million, and Aloft Austin Airport, which increased from about $2,300 to $225,000. In contrast, established venues such as Fairmont Austin Hotel and Buford’s recovered more slowly and remained closer to or below their 2019 levels by 2025.
-
-## Alcohol types over time
-
-Comparison of beer, wine, and liquor sales using 2019 as a baseline before, 2020 as sales drop baseline and 2025 as the recovery baseline.
+Comparison of beer, wine, and liquor sales using 2019 as a baseline before, 2020 as sales drop baseline and 2025 as the recovery baseline. 
 
 ```{r}
 drink_trends <- bev_clean |>
-  filter(year != 2026) |>
   group_by(year) |>
   summarize(
     beer = sum(beer_receipts, na.rm = TRUE),
@@ -156,5 +103,208 @@ drink_trends
 
 Data Takeaway: All three alcohols dropped sharply in 2020, but recovered by 2021 and continued to grow through 2025. Beer and liquor showed the strongest post-COVID growth, while wine remained the smallest and most stable category over time.
 
-note to self: is this worth it to include? no strong conclusions that i can tie back to my original question
+Plotting the comparison of beer, wine and liquor sales. 
 
+```{r}
+drink_plot <- drink_trends |>
+  pivot_longer(
+    cols = c(beer, wine, liquor),
+    names_to = "type",
+    values_to = "sales"
+  )
+
+ggplot(
+  drink_plot,
+  aes(x = year, y = sales)
+) +
+  geom_line(aes(color = type), linewidth = 1.2) +
+  geom_point(aes(color = type), size = 2) +
+  scale_color_manual(values = c(
+    "beer" = "#f4a261",
+    "wine" = "#8d0801",
+    "liquor" = "#264653"
+  )) +
+  labs(
+    title = "Alcohol Sales Over Time",
+    subtitle = "2019 baseline, 2020 drop and 2025 recovery",
+    x = "Year", y = "Total Receipts",
+    color = "Alcohol Type"
+  ) +
+  theme_minimal()
+```
+
+Data Takeaway: Liquor consistently generated the highest sales across all years and contributed to much of the post-pandemic growth. Beer followed a similar recovery pattern at lower levels, while wine remained the smallest category throughout and showed the least variation over time.
+
+## Share of alcohol sales by type over time
+
+Looking at how the proportion of total sales from beer, wine and liquor changed over time.
+
+```{r}
+drink_share <- drink_plot |>
+  group_by(year) |>
+  mutate(
+    total = sum(sales),
+    share = sales / total
+  )
+
+ggplot(
+  drink_share,
+  aes(x = year, y = share)
+) +
+  geom_line(aes(color = type), linewidth = 1.2) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "Share of Alcohol Sales by Type",
+    subtitle = "How beer, wine and liquor contributions changed over time",
+    x = "Year", y = "Share of Total Sales",
+    color = "Alcohol Type"
+  ) +
+  theme_minimal()
+```
+
+Data Takeaway: Liquor held a clear majority of total alcohol sales throughout the period, rising from the high-50% range to the mid-60% range around 2021 before leveling off slightly in later years. Beer’s share declined early on and gradually recovered, but never returned to its initial level of around 25%. Wine remained the smallest segment, slipping from the mid-teens to the low-teens.
+
+Datawrapper: https://www.datawrapper.de/_/o73rJ/ 
+
+## Alcohol sales by ZIP code over time
+
+Getting total alcohol sales by ZIP code and year.
+
+```{r}
+zip_year <- bev_clean |>
+  filter(
+    location_zip != 78713,
+    location_zip != 78774
+  ) |>
+  group_by(location_zip, year) |>
+  summarize(
+    total_sales = sum(total_receipts, na.rm = TRUE)
+  )
+
+zip_year
+```
+
+Plotting the alcohol sales from 2019-2025 for select zip codes. 
+
+```{r}
+selected_zips <- zip_year |>
+  filter(location_zip %in% c(78701, 78704, 78705, 78745, 78757))
+
+ggplot(
+  selected_zips,
+  aes(x = year, y = total_sales, color = factor(location_zip))
+) +
+  geom_line(linewidth = 1.2) +
+  geom_point() +
+  labs(
+    title = "Alcohol Sales Recovery in Selected Austin ZIP Codes",
+    subtitle = "Comparing recovery trends across different areas",
+    x = "Year", y = "Total Receipts",
+    color = "ZIP Code"
+  ) +
+  theme_minimal()
+```
+
+Data Takeaway: Alcohol sales fell sharply across all ZIP codes in 2020, with 78701 experiencing the largest drop. It also showed the strongest rebound, peaking around 2022 before gradually declining in following years. 78704 followed a similar but more moderate recovery pattern. The remaining ZIP codes (78705, 78745, 78757) had smaller declines and steadier growth, with relatively stable trends through 2025.
+
+Datawrapper: https://www.datawrapper.de/_/1JZro/ 
+
+## COVID-19 impact by ZIP code
+
+Recovery comparison by ZIP code, using 2019 as a baseline before, 2020 as sales drop baseline and 2025 as the recovery baseline.
+
+```{r}
+zip_summary <- zip_year |>
+  group_by(location_zip) |>
+  summarize(
+    sales_2019 = total_sales[year == 2019],
+    sales_2020 = total_sales[year == 2020],
+    sales_2025 = total_sales[year == 2025]
+  ) |>
+  filter(!is.na(sales_2019), sales_2019 > 0) |>
+  mutate(
+    covid_drop = sales_2020 / sales_2019,
+    recovery_2025 = sales_2025 / sales_2019
+  )
+
+zip_summary |>
+  arrange(covid_drop)
+```
+
+Data Takeaway: Alcohol sales recovery after COVID-19 varied across Austin-area ZIP codes. Most areas exceeded their 2019 baseline by 2025, but the degree of recovery was uneven across the city. Downtown and core ZIP codes such as 78701 experienced a sharp decline in 2020 and a slower rebound, reaching only about 1.1 times their 2019 sales level by 2025 after the initial drop. In contrast, several suburban and growth-area ZIP codes saw much stronger increases, including 78702, which more than doubled its pre-pandemic sales, along with strong increases in ZIP codes like 78719 and 78731.
+
+A smaller group of ZIP codes, including 78757, 78728 and 78750, remained slightly below or only near their pre-COVID levels by 2025, suggesting slower long-term recovery in parts of North and Northwest Austin. The data shows central Austin stabilizing at more moderate growth while several suburban and emerging areas experienced stronger post-pandemic expansion.
+
+## Establishment recovery
+
+Seeing which establishments recovered the best.
+
+```{r}
+top_locations <- bev_clean |>
+  mutate(location_id = paste(location_name, location_address)) |>
+  group_by(location_id, location_name, location_address, year) |>
+  summarize(
+    total_sales = sum(total_receipts, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+location_summary <- top_locations |>
+  filter(year %in% c(2019, 2020, 2025)) |>
+  pivot_wider(
+    names_from = year,
+    values_from = total_sales,
+    names_prefix = "sales_"
+  ) |>
+  filter(!is.na(sales_2019), sales_2019 > 0) |>
+  mutate(
+    recovery_2025 = sales_2025 / sales_2019,
+    covid_drop = sales_2020 / sales_2019
+  )
+
+location_summary |>
+  arrange(desc(recovery_2025)) |>
+  head(10)
+```
+
+Data Takeaway: The top-performing establishments in terms of recovery  exceeded their 2019 sales by 2025, with several locations showing exponential growth rather than just recovery. A few businesses, such as Red Rose and Maravilla at the Domain, started from very low reported 2019 sales, which inflates their recovery ratios, but even established venues like Proper Hotel and Mala Vida posted substantial gains well above pre-pandemic levels. 
+
+While most locations experienced a drop or disruption in 2020, the overall pattern shows that high-growth establishments not only rebounded but significantly expanded their sales in the years following, indicating strong post-pandemic demand and possible business expansion over time. 
+
+## Summarize yearly totals and location counts
+
+Summarizing total sales and number of reporting locations each year.
+
+```{r}
+year_summary <- bev_clean |>
+  group_by(year) |>
+  summarize(
+    total_sales = sum(total_receipts, na.rm = TRUE),
+    num_locations = n_distinct(paste(location_name, location_address))
+  )
+
+year_summary
+```
+
+Data Takeaway: As the number of locations steadily increased each year, total alcohol sales also rose after the 2020 drop, suggesting a positive relationship between market growth and overall sales. However, sales began to level off after 2023 even as locations continued to increase, indicating that growth in new establishments did not translate into the same pace of sales growth. 
+
+## New vs existing establishments
+
+Identifying when establishments first appear in the dataset to understand whether newer locations are contributing to growth.
+
+```{r}
+location_first_year <- bev_clean |>
+  group_by(location_name, location_address) |>
+  summarize(
+    first_year = min(year)
+  )
+
+new_locations_by_year <- location_first_year |>
+  ungroup() |>
+  count(first_year, name = "num_new_locations")
+
+new_locations_by_year
+```
+
+Data Takeaway: Most establishments in the dataset were already operating in 2019, but there has been a steady increase in new locations every year since 2020, with new openings accelerating through 2025. This aligns with earlier takeaways showing that while total sales recovered quickly after the pandemic, the continued growth in later years is increasingly driven by new establishments entering the market rather than just existing businesses bouncing back.
+
+Acknowledgement of outside help: dyplyr website explained usage of n_distinct
