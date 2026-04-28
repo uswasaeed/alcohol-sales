@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Analysis – Alcohol Sales After COVID-19</title>
+<title>Data Analysis – Austin Alcohol Sales Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,13 +75,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-80278d44abbb443aada24b13759e4b65.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -103,47 +103,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Alcohol Sales After COVID-19</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">about.qmd</span>
-    </span>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-analysis.html">Data Analysis</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Austin Alcohol Sales Project</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cleaning Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-analysis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data Analysis</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -155,9 +177,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">Import</a></li>
   <li><a href="#overall-sales-trend-over-time" id="toc-overall-sales-trend-over-time" class="nav-link" data-scroll-target="#overall-sales-trend-over-time">Overall sales trend over time</a></li>
   <li><a href="#monthly-trend-around-covid" id="toc-monthly-trend-around-covid" class="nav-link" data-scroll-target="#monthly-trend-around-covid">Monthly trend around COVID</a></li>
-  <li><a href="#zip-code-differences" id="toc-zip-code-differences" class="nav-link" data-scroll-target="#zip-code-differences">Zip code differences</a></li>
+  <li><a href="#alcohol-sales-by-type-over-time" id="toc-alcohol-sales-by-type-over-time" class="nav-link" data-scroll-target="#alcohol-sales-by-type-over-time">Alcohol sales by type over time</a></li>
+  <li><a href="#share-of-alcohol-sales-by-type-over-time" id="toc-share-of-alcohol-sales-by-type-over-time" class="nav-link" data-scroll-target="#share-of-alcohol-sales-by-type-over-time">Share of alcohol sales by type over time</a></li>
+  <li><a href="#alcohol-sales-by-zip-code-over-time" id="toc-alcohol-sales-by-zip-code-over-time" class="nav-link" data-scroll-target="#alcohol-sales-by-zip-code-over-time">Alcohol sales by ZIP code over time</a></li>
+  <li><a href="#covid-19-impact-by-zip-code" id="toc-covid-19-impact-by-zip-code" class="nav-link" data-scroll-target="#covid-19-impact-by-zip-code">COVID-19 impact by ZIP code</a></li>
   <li><a href="#establishment-recovery" id="toc-establishment-recovery" class="nav-link" data-scroll-target="#establishment-recovery">Establishment recovery</a></li>
-  <li><a href="#alcohol-types-over-time" id="toc-alcohol-types-over-time" class="nav-link" data-scroll-target="#alcohol-types-over-time">Alcohol types over time</a></li>
+  <li><a href="#summarize-yearly-totals-and-location-counts" id="toc-summarize-yearly-totals-and-location-counts" class="nav-link" data-scroll-target="#summarize-yearly-totals-and-location-counts">Summarize yearly totals and location counts</a></li>
+  <li><a href="#new-vs-existing-establishments" id="toc-new-vs-existing-establishments" class="nav-link" data-scroll-target="#new-vs-existing-establishments">New vs existing establishments</a></li>
   </ul>
 </nav>
     </div>
@@ -205,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>bev_clean <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 110,454
+<pre><code>Rows: 107,528
 Columns: 13
 $ taxpayer_number     &lt;dbl&gt; 32074602080, 32058372064, 32039685030, 32060904094…
 $ location_number     &lt;dbl&gt; 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 6,…
@@ -228,210 +254,338 @@ $ year                &lt;dbl&gt; 2025, 2019, 2019, 2020, 2022, 2024, 2019, 2019
 <p>Exploring how total alcohol sales in Austin changed over time, specifically before and after COVID-19.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>annual_sales <span class="ot">&lt;-</span> bev_clean <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">!=</span> <span class="dv">2026</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(total_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>annual_sales</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7 × 2
-   year total_sales
-  &lt;dbl&gt;       &lt;dbl&gt;
-1  2019   882805713
-2  2020   425970744
-3  2021   858982905
-4  2022  1137123564
-5  2023  1180243932
-6  2024  1154925774
-7  2025  1143640701</code></pre>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(total_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>annual_sales</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["total_sales"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"2019","2":"882805713"},{"1":"2020","2":"425970744"},{"1":"2021","2":"858982905"},{"1":"2022","2":"1137123564"},{"1":"2023","2":"1180243932"},{"1":"2024","2":"1154925774"},{"1":"2025","2":"1143640701"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <p>Data Takeaway: Alcohol sales in Austin dropped sharply during the COVID-19 pandemic, falling from about $883 million in 2019 to $426 million in 2020, a decline of more than half. Sales rebounded in 2021 to roughly $859 million, nearly returning to pre-pandemic levels. In the years that followed, total sales continued to grow, surpassing pre-COVID figures and reaching about $1.14 billion in 2025, the highest in the dataset.</p>
+<p>Plotting the alcohol sales over time.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  annual_sales,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(year), <span class="at">y =</span> total_sales)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#264653"</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Total Alcohol Sales in Austin by Year"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Sharp decline in 2020 followed by steady growth"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total Receipts"</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-analysis_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="monthly-trend-around-covid" class="level2">
 <h2 class="anchored" data-anchor-id="monthly-trend-around-covid">Monthly trend around COVID</h2>
 <p>Comparing monthly revenue trends before, during and after the pandemic.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>monthly_sales <span class="ot">&lt;-</span> bev_clean <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">!=</span> <span class="dv">2026</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, <span class="at">month =</span> <span class="fu">month</span>(date)) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(total_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year, month)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, <span class="at">month =</span> <span class="fu">month</span>(date)) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(total_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year, month)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'year'. You can override using the
 `.groups` argument.</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>monthly_sales</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 84 × 3
-# Groups:   year [7]
-    year month total_sales
-   &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;
- 1  2019     1    60391011
- 2  2019     2    65586510
- 3  2019     3    88690780
- 4  2019     4    73777549
- 5  2019     5    79687235
- 6  2019     6    72620588
- 7  2019     7    67900581
- 8  2019     8    73205084
- 9  2019     9    77108860
-10  2019    10    75978950
-# ℹ 74 more rows</code></pre>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["month"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["total_sales"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2019","2":"1","3":"60391011"},{"1":"2019","2":"2","3":"65586510"},{"1":"2019","2":"3","3":"88690780"},{"1":"2019","2":"4","3":"73777549"},{"1":"2019","2":"5","3":"79687235"},{"1":"2019","2":"6","3":"72620588"},{"1":"2019","2":"7","3":"67900581"},{"1":"2019","2":"8","3":"73205084"},{"1":"2019","2":"9","3":"77108860"},{"1":"2019","2":"10","3":"75978950"},{"1":"2019","2":"11","3":"74785286"},{"1":"2019","2":"12","3":"73073279"},{"1":"2020","2":"1","3":"66942197"},{"1":"2020","2":"2","3":"72500052"},{"1":"2020","2":"3","3":"35484386"},{"1":"2020","2":"4","3":"2678662"},{"1":"2020","2":"5","3":"15785606"},{"1":"2020","2":"6","3":"28272175"},{"1":"2020","2":"7","3":"20275690"},{"1":"2020","2":"8","3":"28576769"},{"1":"2020","2":"9","3":"35973761"},{"1":"2020","2":"10","3":"45818537"},{"1":"2020","2":"11","3":"37547689"},{"1":"2020","2":"12","3":"36115220"},{"1":"2021","2":"1","3":"38355524"},{"1":"2021","2":"2","3":"32725446"},{"1":"2021","2":"3","3":"61408343"},{"1":"2021","2":"4","3":"69821498"},{"1":"2021","2":"5","3":"82559682"},{"1":"2021","2":"6","3":"77485632"},{"1":"2021","2":"7","3":"83820359"},{"1":"2021","2":"8","3":"72220919"},{"1":"2021","2":"9","3":"85160802"},{"1":"2021","2":"10","3":"96101593"},{"1":"2021","2":"11","3":"79105840"},{"1":"2021","2":"12","3":"80217267"},{"1":"2022","2":"1","3":"65515964"},{"1":"2022","2":"2","3":"77258504"},{"1":"2022","2":"3","3":"107031642"},{"1":"2022","2":"4","3":"108618548"},{"1":"2022","2":"5","3":"104709424"},{"1":"2022","2":"6","3":"92118157"},{"1":"2022","2":"7","3":"93051486"},{"1":"2022","2":"8","3":"88397765"},{"1":"2022","2":"9","3":"104106759"},{"1":"2022","2":"10","3":"111054846"},{"1":"2022","2":"11","3":"90439143"},{"1":"2022","2":"12","3":"94821326"},{"1":"2023","2":"1","3":"83574969"},{"1":"2023","2":"2","3":"90022204"},{"1":"2023","2":"3","3":"115352046"},{"1":"2023","2":"4","3":"110467157"},{"1":"2023","2":"5","3":"103351068"},{"1":"2023","2":"6","3":"93570178"},{"1":"2023","2":"7","3":"91815253"},{"1":"2023","2":"8","3":"86465731"},{"1":"2023","2":"9","3":"101456169"},{"1":"2023","2":"10","3":"117011175"},{"1":"2023","2":"11","3":"91217840"},{"1":"2023","2":"12","3":"95940142"},{"1":"2024","2":"1","3":"74693658"},{"1":"2024","2":"2","3":"89757446"},{"1":"2024","2":"3","3":"112841483"},{"1":"2024","2":"4","3":"108807587"},{"1":"2024","2":"5","3":"106440223"},{"1":"2024","2":"6","3":"88904877"},{"1":"2024","2":"7","3":"82513028"},{"1":"2024","2":"8","3":"89005963"},{"1":"2024","2":"9","3":"91645275"},{"1":"2024","2":"10","3":"119368971"},{"1":"2024","2":"11","3":"98235571"},{"1":"2024","2":"12","3":"92711692"},{"1":"2025","2":"1","3":"74477336"},{"1":"2025","2":"2","3":"86844573"},{"1":"2025","2":"3","3":"111368464"},{"1":"2025","2":"4","3":"107580503"},{"1":"2025","2":"5","3":"107489362"},{"1":"2025","2":"6","3":"86742074"},{"1":"2025","2":"7","3":"83318727"},{"1":"2025","2":"8","3":"90105289"},{"1":"2025","2":"9","3":"91252682"},{"1":"2025","2":"10","3":"117467659"},{"1":"2025","2":"11","3":"94447124"},{"1":"2025","2":"12","3":"92546908"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <p>Data Takeaway: Monthly alcohol sales in Austin followed a stable pattern in 2019, ranging from about $60 million to $89 million per month. In 2020, sales dropped sharply beginning in March, falling to just around $2.7 million in April, the lowest point in the dataset. Sales gradually recovered throughout the year and returned to more typical levels by late 2020. By 2021 and 2022, monthly sales had fully rebounded, with the highest months reaching over $100 million, and remained strong through 2025.</p>
 </section>
-<section id="zip-code-differences" class="level2">
-<h2 class="anchored" data-anchor-id="zip-code-differences">Zip code differences</h2>
+<section id="alcohol-sales-by-type-over-time" class="level2">
+<h2 class="anchored" data-anchor-id="alcohol-sales-by-type-over-time">Alcohol sales by type over time</h2>
+<p>Comparison of beer, wine, and liquor sales using 2019 as a baseline before, 2020 as sales drop baseline and 2025 as the recovery baseline.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>drink_trends <span class="ot">&lt;-</span> bev_clean <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">beer =</span> <span class="fu">sum</span>(beer_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">wine =</span> <span class="fu">sum</span>(wine_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">liquor =</span> <span class="fu">sum</span>(liquor_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>drink_trends</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["beer"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["wine"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["liquor"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2019","2":"227256019","3":"142754707","4":"510077953"},{"1":"2020","2":"96370482","3":"67906971","4":"260427020"},{"1":"2021","2":"188500896","3":"119350228","4":"548370408"},{"1":"2022","2":"253704639","3":"156698765","4":"715143266"},{"1":"2023","2":"269912334","3":"158425895","4":"745801387"},{"1":"2024","2":"270134398","3":"152443541","4":"725645363"},{"1":"2025","2":"267447638","3":"156026067","4":"711759279"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Data Takeaway: All three alcohols dropped sharply in 2020, but recovered by 2021 and continued to grow through 2025. Beer and liquor showed the strongest post-COVID growth, while wine remained the smallest and most stable category over time.</p>
+<p>Plotting the comparison of beer, wine and liquor sales.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>drink_plot <span class="ot">&lt;-</span> drink_trends <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(beer, wine, liquor),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"type"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"sales"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  drink_plot,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> sales)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> type), <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> type), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"beer"</span> <span class="ot">=</span> <span class="st">"#f4a261"</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wine"</span> <span class="ot">=</span> <span class="st">"#8d0801"</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"liquor"</span> <span class="ot">=</span> <span class="st">"#264653"</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Alcohol Sales Over Time"</span>,</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"2019 baseline, 2020 drop and 2025 recovery"</span>,</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Total Receipts"</span>,</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Alcohol Type"</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-analysis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Data Takeaway: Liquor consistently generated the highest sales across all years and contributed to much of the post-pandemic growth. Beer followed a similar recovery pattern at lower levels, while wine remained the smallest category throughout and showed the least variation over time.</p>
+</section>
+<section id="share-of-alcohol-sales-by-type-over-time" class="level2">
+<h2 class="anchored" data-anchor-id="share-of-alcohol-sales-by-type-over-time">Share of alcohol sales by type over time</h2>
+<p>Looking at how the proportion of total sales from beer, wine and liquor changed over time.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>drink_share <span class="ot">&lt;-</span> drink_plot <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> <span class="fu">sum</span>(sales),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">share =</span> sales <span class="sc">/</span> total</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  drink_share,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> share)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> type), <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Share of Alcohol Sales by Type"</span>,</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"How beer, wine and liquor contributions changed over time"</span>,</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Share of Total Sales"</span>,</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Alcohol Type"</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Data Takeaway: Liquor held a clear majority of total alcohol sales throughout the period, rising from the high-50% range to the mid-60% range around 2021 before leveling off slightly in later years. Beer’s share declined early on and gradually recovered, but never returned to its initial level of around 25%. Wine remained the smallest segment, slipping from the mid-teens to the low-teens.</p>
+<p>Datawrapper: https://www.datawrapper.de/_/o73rJ/</p>
+</section>
+<section id="alcohol-sales-by-zip-code-over-time" class="level2">
+<h2 class="anchored" data-anchor-id="alcohol-sales-by-zip-code-over-time">Alcohol sales by ZIP code over time</h2>
+<p>Getting total alcohol sales by ZIP code and year.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>zip_year <span class="ot">&lt;-</span> bev_clean <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    location_zip <span class="sc">!=</span> <span class="dv">78713</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    location_zip <span class="sc">!=</span> <span class="dv">78774</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location_zip, year) <span class="sc">|&gt;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(total_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'location_zip'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>zip_year</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["location_zip"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["total_sales"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"78660","2":"2019","3":"1604226"},{"1":"78660","2":"2020","3":"1826271"},{"1":"78660","2":"2021","3":"2234050"},{"1":"78660","2":"2022","3":"2093620"},{"1":"78660","2":"2023","3":"1642353"},{"1":"78660","2":"2024","3":"1349514"},{"1":"78660","2":"2025","3":"940012"},{"1":"78701","2":"2019","3":"331436158"},{"1":"78701","2":"2020","3":"126939904"},{"1":"78701","2":"2021","3":"292229239"},{"1":"78701","2":"2022","3":"406834139"},{"1":"78701","2":"2023","3":"399072911"},{"1":"78701","2":"2024","3":"381141461"},{"1":"78701","2":"2025","3":"365126906"},{"1":"78702","2":"2019","3":"59036968"},{"1":"78702","2":"2020","3":"27214998"},{"1":"78702","2":"2021","3":"60633295"},{"1":"78702","2":"2022","3":"83236933"},{"1":"78702","2":"2023","3":"100718553"},{"1":"78702","2":"2024","3":"106602685"},{"1":"78702","2":"2025","3":"131870040"},{"1":"78703","2":"2019","3":"24105503"},{"1":"78703","2":"2020","3":"14369480"},{"1":"78703","2":"2021","3":"28573556"},{"1":"78703","2":"2022","3":"36067016"},{"1":"78703","2":"2023","3":"37567394"},{"1":"78703","2":"2024","3":"39153527"},{"1":"78703","2":"2025","3":"41573191"},{"1":"78704","2":"2019","3":"102629883"},{"1":"78704","2":"2020","3":"55600827"},{"1":"78704","2":"2021","3":"104070832"},{"1":"78704","2":"2022","3":"134382923"},{"1":"78704","2":"2023","3":"155782445"},{"1":"78704","2":"2024","3":"129311273"},{"1":"78704","2":"2025","3":"123578781"},{"1":"78705","2":"2019","3":"11172482"},{"1":"78705","2":"2020","3":"3977237"},{"1":"78705","2":"2021","3":"10597756"},{"1":"78705","2":"2022","3":"15880871"},{"1":"78705","2":"2023","3":"17275205"},{"1":"78705","2":"2024","3":"18080611"},{"1":"78705","2":"2025","3":"18361107"},{"1":"78712","2":"2019","3":"7429309"},{"1":"78712","2":"2020","3":"1773613"},{"1":"78712","2":"2021","3":"6474052"},{"1":"78712","2":"2022","3":"25056737"},{"1":"78712","2":"2023","3":"20959232"},{"1":"78712","2":"2024","3":"19478063"},{"1":"78712","2":"2025","3":"9248651"},{"1":"78717","2":"2019","3":"9102624"},{"1":"78717","2":"2020","3":"4672785"},{"1":"78717","2":"2021","3":"7147357"},{"1":"78717","2":"2022","3":"9787770"},{"1":"78717","2":"2023","3":"11109755"},{"1":"78717","2":"2024","3":"11555917"},{"1":"78717","2":"2025","3":"10255283"},{"1":"78719","2":"2019","3":"12085105"},{"1":"78719","2":"2020","3":"4535037"},{"1":"78719","2":"2021","3":"13712402"},{"1":"78719","2":"2022","3":"23494519"},{"1":"78719","2":"2023","3":"24562943"},{"1":"78719","2":"2024","3":"25480663"},{"1":"78719","2":"2025","3":"25146256"},{"1":"78721","2":"2019","3":"556955"},{"1":"78721","2":"2020","3":"189867"},{"1":"78721","2":"2021","3":"542263"},{"1":"78721","2":"2022","3":"801877"},{"1":"78721","2":"2023","3":"951971"},{"1":"78721","2":"2024","3":"986200"},{"1":"78721","2":"2025","3":"1030043"},{"1":"78722","2":"2019","3":"8851553"},{"1":"78722","2":"2020","3":"4405597"},{"1":"78722","2":"2021","3":"7843565"},{"1":"78722","2":"2022","3":"11171433"},{"1":"78722","2":"2023","3":"13176508"},{"1":"78722","2":"2024","3":"12752809"},{"1":"78722","2":"2025","3":"11784317"},{"1":"78723","2":"2019","3":"8993562"},{"1":"78723","2":"2020","3":"3963982"},{"1":"78723","2":"2021","3":"7214186"},{"1":"78723","2":"2022","3":"9517647"},{"1":"78723","2":"2023","3":"10760281"},{"1":"78723","2":"2024","3":"12511665"},{"1":"78723","2":"2025","3":"12572316"},{"1":"78724","2":"2019","3":"518464"},{"1":"78724","2":"2020","3":"103288"},{"1":"78724","2":"2021","3":"167698"},{"1":"78724","2":"2022","3":"271866"},{"1":"78724","2":"2023","3":"1604527"},{"1":"78724","2":"2024","3":"1771373"},{"1":"78724","2":"2025","3":"1580247"},{"1":"78726","2":"2019","3":"5676390"},{"1":"78726","2":"2020","3":"2965243"},{"1":"78726","2":"2021","3":"4970206"},{"1":"78726","2":"2022","3":"6060733"},{"1":"78726","2":"2023","3":"5489105"},{"1":"78726","2":"2024","3":"4920296"},{"1":"78726","2":"2025","3":"4428845"},{"1":"78727","2":"2019","3":"1410972"},{"1":"78727","2":"2020","3":"424487"},{"1":"78727","2":"2021","3":"1089375"},{"1":"78727","2":"2022","3":"1510986"},{"1":"78727","2":"2023","3":"1656319"},{"1":"78727","2":"2024","3":"2107873"},{"1":"78727","2":"2025","3":"2418732"},{"1":"78728","2":"2019","3":"12462394"},{"1":"78728","2":"2020","3":"6097573"},{"1":"78728","2":"2021","3":"9578839"},{"1":"78728","2":"2022","3":"12916533"},{"1":"78728","2":"2023","3":"13050435"},{"1":"78728","2":"2024","3":"11173131"},{"1":"78728","2":"2025","3":"10464508"},{"1":"78729","2":"2019","3":"6084130"},{"1":"78729","2":"2020","3":"2969307"},{"1":"78729","2":"2021","3":"4811409"},{"1":"78729","2":"2022","3":"6352182"},{"1":"78729","2":"2023","3":"6275266"},{"1":"78729","2":"2024","3":"5995515"},{"1":"78729","2":"2025","3":"6630601"},{"1":"78730","2":"2019","3":"1015002"},{"1":"78730","2":"2020","3":"986913"},{"1":"78730","2":"2021","3":"1830812"},{"1":"78730","2":"2022","3":"2409411"},{"1":"78730","2":"2023","3":"3200086"},{"1":"78730","2":"2024","3":"3102725"},{"1":"78730","2":"2025","3":"3386771"},{"1":"78731","2":"2019","3":"4278829"},{"1":"78731","2":"2020","3":"2173903"},{"1":"78731","2":"2021","3":"3959662"},{"1":"78731","2":"2022","3":"4899785"},{"1":"78731","2":"2023","3":"6666790"},{"1":"78731","2":"2024","3":"10860483"},{"1":"78731","2":"2025","3":"11298515"},{"1":"78732","2":"2019","3":"9577042"},{"1":"78732","2":"2020","3":"7639460"},{"1":"78732","2":"2021","3":"12050311"},{"1":"78732","2":"2022","3":"12637052"},{"1":"78732","2":"2023","3":"11610178"},{"1":"78732","2":"2024","3":"10957822"},{"1":"78732","2":"2025","3":"11158865"},{"1":"78733","2":"2019","3":"42533"},{"1":"78733","2":"2020","3":"257062"},{"1":"78733","2":"2021","3":"438913"},{"1":"78733","2":"2022","3":"531429"},{"1":"78733","2":"2023","3":"658038"},{"1":"78733","2":"2024","3":"743301"},{"1":"78733","2":"2025","3":"786527"},{"1":"78734","2":"2019","3":"2539570"},{"1":"78734","2":"2020","3":"1894580"},{"1":"78734","2":"2021","3":"2711033"},{"1":"78734","2":"2022","3":"2694065"},{"1":"78734","2":"2023","3":"2164584"},{"1":"78734","2":"2024","3":"1594331"},{"1":"78734","2":"2025","3":"2299319"},{"1":"78735","2":"2019","3":"12154810"},{"1":"78735","2":"2020","3":"10423428"},{"1":"78735","2":"2021","3":"17409251"},{"1":"78735","2":"2022","3":"20304628"},{"1":"78735","2":"2023","3":"23114733"},{"1":"78735","2":"2024","3":"22992250"},{"1":"78735","2":"2025","3":"23664318"},{"1":"78736","2":"2019","3":"747571"},{"1":"78736","2":"2020","3":"466745"},{"1":"78736","2":"2021","3":"900522"},{"1":"78736","2":"2022","3":"1020400"},{"1":"78736","2":"2023","3":"1132850"},{"1":"78736","2":"2024","3":"1777751"},{"1":"78736","2":"2025","3":"1989764"},{"1":"78737","2":"2019","3":"3319824"},{"1":"78737","2":"2020","3":"2624862"},{"1":"78737","2":"2021","3":"4523751"},{"1":"78737","2":"2022","3":"4638310"},{"1":"78737","2":"2023","3":"3868256"},{"1":"78737","2":"2024","3":"3759975"},{"1":"78737","2":"2025","3":"3895358"},{"1":"78738","2":"2019","3":"1471029"},{"1":"78738","2":"2020","3":"1426511"},{"1":"78738","2":"2021","3":"1526012"},{"1":"78738","2":"2022","3":"1230954"},{"1":"78738","2":"2023","3":"1499453"},{"1":"78738","2":"2024","3":"1588019"},{"1":"78738","2":"2025","3":"1340564"},{"1":"78739","2":"2019","3":"305648"},{"1":"78739","2":"2020","3":"274723"},{"1":"78739","2":"2021","3":"481075"},{"1":"78739","2":"2022","3":"603784"},{"1":"78739","2":"2023","3":"443668"},{"1":"78739","2":"2024","3":"790479"},{"1":"78739","2":"2025","3":"730659"},{"1":"78741","2":"2019","3":"12826169"},{"1":"78741","2":"2020","3":"5741330"},{"1":"78741","2":"2021","3":"12395269"},{"1":"78741","2":"2022","3":"16746376"},{"1":"78741","2":"2023","3":"15640834"},{"1":"78741","2":"2024","3":"35127330"},{"1":"78741","2":"2025","3":"15058423"},{"1":"78742","2":"2019","3":"468097"},{"1":"78742","2":"2020","3":"66025"},{"1":"78742","2":"2021","3":"23205"},{"1":"78742","2":"2022","3":"10545"},{"1":"78742","2":"2023","3":"0"},{"1":"78742","2":"2024","3":"220"},{"1":"78742","2":"2025","3":"126112"},{"1":"78744","2":"2019","3":"4147843"},{"1":"78744","2":"2020","3":"2230675"},{"1":"78744","2":"2021","3":"3137967"},{"1":"78744","2":"2022","3":"4745367"},{"1":"78744","2":"2023","3":"7527224"},{"1":"78744","2":"2024","3":"7027592"},{"1":"78744","2":"2025","3":"6290799"},{"1":"78745","2":"2019","3":"13568852"},{"1":"78745","2":"2020","3":"9475348"},{"1":"78745","2":"2021","3":"15780213"},{"1":"78745","2":"2022","3":"18161950"},{"1":"78745","2":"2023","3":"18568834"},{"1":"78745","2":"2024","3":"19837554"},{"1":"78745","2":"2025","3":"26681885"},{"1":"78746","2":"2019","3":"8966364"},{"1":"78746","2":"2020","3":"5796826"},{"1":"78746","2":"2021","3":"8813597"},{"1":"78746","2":"2022","3":"10181253"},{"1":"78746","2":"2023","3":"10592070"},{"1":"78746","2":"2024","3":"11215008"},{"1":"78746","2":"2025","3":"10989822"},{"1":"78747","2":"2019","3":"440009"},{"1":"78747","2":"2020","3":"507202"},{"1":"78747","2":"2021","3":"743322"},{"1":"78747","2":"2022","3":"869432"},{"1":"78747","2":"2023","3":"988249"},{"1":"78747","2":"2024","3":"1065353"},{"1":"78747","2":"2025","3":"1116377"},{"1":"78748","2":"2019","3":"16145501"},{"1":"78748","2":"2020","3":"9555873"},{"1":"78748","2":"2021","3":"22154508"},{"1":"78748","2":"2022","3":"27040350"},{"1":"78748","2":"2023","3":"27871917"},{"1":"78748","2":"2024","3":"28491230"},{"1":"78748","2":"2025","3":"28612749"},{"1":"78749","2":"2019","3":"9981433"},{"1":"78749","2":"2020","3":"5297338"},{"1":"78749","2":"2021","3":"8032736"},{"1":"78749","2":"2022","3":"10042894"},{"1":"78749","2":"2023","3":"11067014"},{"1":"78749","2":"2024","3":"11375047"},{"1":"78749","2":"2025","3":"10614585"},{"1":"78750","2":"2019","3":"9475359"},{"1":"78750","2":"2020","3":"5951138"},{"1":"78750","2":"2021","3":"9261131"},{"1":"78750","2":"2022","3":"10367873"},{"1":"78750","2":"2023","3":"10304618"},{"1":"78750","2":"2024","3":"9566497"},{"1":"78750","2":"2025","3":"8966963"},{"1":"78751","2":"2019","3":"9611449"},{"1":"78751","2":"2020","3":"4205160"},{"1":"78751","2":"2021","3":"8707074"},{"1":"78751","2":"2022","3":"12000769"},{"1":"78751","2":"2023","3":"13402267"},{"1":"78751","2":"2024","3":"14240217"},{"1":"78751","2":"2025","3":"15191531"},{"1":"78752","2":"2019","3":"21788586"},{"1":"78752","2":"2020","3":"9568491"},{"1":"78752","2":"2021","3":"19410619"},{"1":"78752","2":"2022","3":"24504530"},{"1":"78752","2":"2023","3":"25226599"},{"1":"78752","2":"2024","3":"23895244"},{"1":"78752","2":"2025","3":"26974044"},{"1":"78753","2":"2019","3":"10466289"},{"1":"78753","2":"2020","3":"6585241"},{"1":"78753","2":"2021","3":"12052865"},{"1":"78753","2":"2022","3":"17049611"},{"1":"78753","2":"2023","3":"16812749"},{"1":"78753","2":"2024","3":"13814497"},{"1":"78753","2":"2025","3":"12072399"},{"1":"78754","2":"2019","3":"154830"},{"1":"78754","2":"2020","3":"67263"},{"1":"78754","2":"2021","3":"573623"},{"1":"78754","2":"2022","3":"739559"},{"1":"78754","2":"2023","3":"1512445"},{"1":"78754","2":"2024","3":"1601385"},{"1":"78754","2":"2025","3":"1843223"},{"1":"78756","2":"2019","3":"7671386"},{"1":"78756","2":"2020","3":"4022620"},{"1":"78756","2":"2021","3":"6878977"},{"1":"78756","2":"2022","3":"8470931"},{"1":"78756","2":"2023","3":"10160271"},{"1":"78756","2":"2024","3":"10667263"},{"1":"78756","2":"2025","3":"12388410"},{"1":"78757","2":"2019","3":"20780486"},{"1":"78757","2":"2020","3":"9801422"},{"1":"78757","2":"2021","3":"16009587"},{"1":"78757","2":"2022","3":"21112717"},{"1":"78757","2":"2023","3":"21148494"},{"1":"78757","2":"2024","3":"20474067"},{"1":"78757","2":"2025","3":"19823290"},{"1":"78758","2":"2019","3":"70749087"},{"1":"78758","2":"2020","3":"42584463"},{"1":"78758","2":"2021","3":"85665454"},{"1":"78758","2":"2022","3":"93753231"},{"1":"78758","2":"2023","3":"87011988"},{"1":"78758","2":"2024","3":"78639383"},{"1":"78758","2":"2025","3":"84119933"},{"1":"78759","2":"2019","3":"26955437"},{"1":"78759","2":"2020","3":"14316646"},{"1":"78759","2":"2021","3":"21584088"},{"1":"78759","2":"2022","3":"24810745"},{"1":"78759","2":"2023","3":"26282556"},{"1":"78759","2":"2024","3":"25201325"},{"1":"78759","2":"2025","3":"25097748"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Plotting the alcohol sales from 2019-2025 for select zip codes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>selected_zips <span class="ot">&lt;-</span> zip_year <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(location_zip <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">78701</span>, <span class="dv">78704</span>, <span class="dv">78705</span>, <span class="dv">78745</span>, <span class="dv">78757</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  selected_zips,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total_sales, <span class="at">color =</span> <span class="fu">factor</span>(location_zip))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Alcohol Sales Recovery in Selected Austin ZIP Codes"</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Comparing recovery trends across different areas"</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Total Receipts"</span>,</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"ZIP Code"</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-analysis_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Data Takeaway: Alcohol sales fell sharply across all ZIP codes in 2020, with 78701 experiencing the largest drop. It also showed the strongest rebound, peaking around 2022 before gradually declining in following years. 78704 followed a similar but more moderate recovery pattern. The remaining ZIP codes (78705, 78745, 78757) had smaller declines and steadier growth, with relatively stable trends through 2025.</p>
+<p>Datawrapper: https://www.datawrapper.de/_/1JZro/</p>
+</section>
+<section id="covid-19-impact-by-zip-code" class="level2">
+<h2 class="anchored" data-anchor-id="covid-19-impact-by-zip-code">COVID-19 impact by ZIP code</h2>
 <p>Recovery comparison by ZIP code, using 2019 as a baseline before, 2020 as sales drop baseline and 2025 as the recovery baseline.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>zip_summary <span class="ot">&lt;-</span> bev_clean <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">!=</span> <span class="dv">2026</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location_zip, year) <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_sales =</span> <span class="fu">sum</span>(total_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location_zip) <span class="sc">|&gt;</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sales_2019 =</span> total_sales[year <span class="sc">==</span> <span class="dv">2019</span>],</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">sales_2020 =</span> total_sales[year <span class="sc">==</span> <span class="dv">2020</span>],</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sales_2025 =</span> total_sales[year <span class="sc">==</span> <span class="dv">2025</span>],</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">recovery_2025 =</span> sales_2025 <span class="sc">/</span> sales_2019,</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">covid_drop =</span> sales_2020 <span class="sc">/</span> sales_2019</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(recovery_2025))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'location_zip'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
-dplyr 1.1.0.
-ℹ Please use `reframe()` instead.
-ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
-  always returns an ungrouped data frame and adjust accordingly.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'location_zip'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>zip_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 44 × 6
-# Groups:   location_zip [44]
-   location_zip sales_2019 sales_2020 sales_2025 recovery_2025 covid_drop
-   &lt;chr&gt;             &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
- 1 78733             42533     257062     786527         18.5       6.04 
- 2 78754            154830      67263    1843223         11.9       0.434
- 3 78730           1015002     986913    3386771          3.34      0.972
- 4 78724            518464     103288    1580247          3.05      0.199
- 5 78736            747571     466745    1989764          2.66      0.624
- 6 78731           4278829    2173903   11298515          2.64      0.508
- 7 78747            440009     507202    1116377          2.54      1.15 
- 8 78739            305648     274723     730659          2.39      0.899
- 9 78702          59036968   27214998  131870040          2.23      0.461
-10 78719          12085105    4535037   25146256          2.08      0.375
-# ℹ 34 more rows</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>zip_summary <span class="ot">&lt;-</span> zip_year <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location_zip) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sales_2019 =</span> total_sales[year <span class="sc">==</span> <span class="dv">2019</span>],</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sales_2020 =</span> total_sales[year <span class="sc">==</span> <span class="dv">2020</span>],</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sales_2025 =</span> total_sales[year <span class="sc">==</span> <span class="dv">2025</span>]</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sales_2019), sales_2019 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">covid_drop =</span> sales_2020 <span class="sc">/</span> sales_2019,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">recovery_2025 =</span> sales_2025 <span class="sc">/</span> sales_2019</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>zip_summary <span class="sc">|&gt;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(covid_drop)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["location_zip"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sales_2019"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sales_2020"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sales_2025"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["covid_drop"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["recovery_2025"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"78742","2":"468097","3":"66025","4":"126112","5":"0.1410498","6":"0.2694142"},{"1":"78724","2":"518464","3":"103288","4":"1580247","5":"0.1992192","6":"3.0479397"},{"1":"78712","2":"7429309","3":"1773613","4":"9248651","5":"0.2387319","6":"1.2448871"},{"1":"78727","2":"1410972","3":"424487","4":"2418732","5":"0.3008472","6":"1.7142310"},{"1":"78721","2":"556955","3":"189867","4":"1030043","5":"0.3409019","6":"1.8494187"},{"1":"78705","2":"11172482","3":"3977237","4":"18361107","5":"0.3559851","6":"1.6434224"},{"1":"78719","2":"12085105","3":"4535037","4":"25146256","5":"0.3752584","6":"2.0807644"},{"1":"78701","2":"331436158","3":"126939904","4":"365126906","5":"0.3829996","6":"1.1016508"},{"1":"78754","2":"154830","3":"67263","4":"1843223","5":"0.4344313","6":"11.9048182"},{"1":"78751","2":"9611449","3":"4205160","4":"15191531","5":"0.4375157","6":"1.5805662"},{"1":"78752","2":"21788586","3":"9568491","4":"26974044","5":"0.4391515","6":"1.2379897"},{"1":"78723","2":"8993562","3":"3963982","4":"12572316","5":"0.4407577","6":"1.3979240"},{"1":"78741","2":"12826169","3":"5741330","4":"15058423","5":"0.4476263","6":"1.1740390"},{"1":"78702","2":"59036968","3":"27214998","4":"131870040","5":"0.4609823","6":"2.2336858"},{"1":"78757","2":"20780486","3":"9801422","4":"19823290","5":"0.4716647","6":"0.9539377"},{"1":"78729","2":"6084130","3":"2969307","4":"6630601","5":"0.4880413","6":"1.0898191"},{"1":"78728","2":"12462394","3":"6097573","4":"10464508","5":"0.4892778","6":"0.8396868"},{"1":"78722","2":"8851553","3":"4405597","4":"11784317","5":"0.4977202","6":"1.3313276"},{"1":"78731","2":"4278829","3":"2173903","4":"11298515","5":"0.5080603","6":"2.6405624"},{"1":"78717","2":"9102624","3":"4672785","4":"10255283","5":"0.5133448","6":"1.1266293"},{"1":"78726","2":"5676390","3":"2965243","4":"4428845","5":"0.5223818","6":"0.7802221"},{"1":"78756","2":"7671386","3":"4022620","4":"12388410","5":"0.5243668","6":"1.6148855"},{"1":"78749","2":"9981433","3":"5297338","4":"10614585","5":"0.5307192","6":"1.0634330"},{"1":"78759","2":"26955437","3":"14316646","4":"25097748","5":"0.5311228","6":"0.9310830"},{"1":"78744","2":"4147843","3":"2230675","4":"6290799","5":"0.5377916","6":"1.5166435"},{"1":"78704","2":"102629883","3":"55600827","4":"123578781","5":"0.5417606","6":"1.2041208"},{"1":"78748","2":"16145501","3":"9555873","4":"28612749","5":"0.5918598","6":"1.7721809"},{"1":"78703","2":"24105503","3":"14369480","4":"41573191","5":"0.5961079","6":"1.7246349"},{"1":"78758","2":"70749087","3":"42584463","4":"84119933","5":"0.6019083","6":"1.1889897"},{"1":"78736","2":"747571","3":"466745","4":"1989764","5":"0.6243487","6":"2.6616388"},{"1":"78750","2":"9475359","3":"5951138","4":"8966963","5":"0.6280646","6":"0.9463455"},{"1":"78753","2":"10466289","3":"6585241","4":"12072399","5":"0.6291859","6":"1.1534555"},{"1":"78746","2":"8966364","3":"5796826","4":"10989822","5":"0.6465080","6":"1.2256721"},{"1":"78745","2":"13568852","3":"9475348","4":"26681885","5":"0.6983161","6":"1.9664070"},{"1":"78734","2":"2539570","3":"1894580","4":"2299319","5":"0.7460239","6":"0.9053970"},{"1":"78737","2":"3319824","3":"2624862","4":"3895358","5":"0.7906630","6":"1.1733628"},{"1":"78732","2":"9577042","3":"7639460","4":"11158865","5":"0.7976847","6":"1.1651682"},{"1":"78735","2":"12154810","3":"10423428","4":"23664318","5":"0.8575558","6":"1.9469097"},{"1":"78739","2":"305648","3":"274723","4":"730659","5":"0.8988215","6":"2.3905244"},{"1":"78738","2":"1471029","3":"1426511","4":"1340564","5":"0.9697368","6":"0.9113104"},{"1":"78730","2":"1015002","3":"986913","4":"3386771","5":"0.9723262","6":"3.3367136"},{"1":"78660","2":"1604226","3":"1826271","4":"940012","5":"1.1384125","6":"0.5859598"},{"1":"78747","2":"440009","3":"507202","4":"1116377","5":"1.1527082","6":"2.5371686"},{"1":"78733","2":"42533","3":"257062","4":"786527","5":"6.0438248","6":"18.4921590"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
-<p>Data Takeaway: Alcohol sales recovery after COVID-19 varied across Austin-area ZIP codes. Some areas more than fully rebounded by 2025, with ZIP code 78733 reaching more than 18 times its 2019 sales level, while others remained below pre-pandemic levels. Overall, most ZIP codes exceeded their 2019 baseline, but recovery was uneven across the city.</p>
-<p>Downtown and core Austin ZIP codes such as 78701 recovered more slowly, reaching about 1.1 times their 2019 sales level by 2025 after a sharp decline in 2020. In contrast, several suburban ZIP codes saw much stronger growth, including 78733 and 78754, which experienced some of the highest recovery rates in the dataset. A small number of ZIP codes, including 78757 and 78750, remained slightly below their pre-COVID levels by 2025, suggesting slower long-term recovery in parts of North and Northwest Austin.</p>
-<p>note to self: ask prof if this is too long? feels like i got good data from here but #idk</p>
+</div>
+<p>Data Takeaway: Alcohol sales recovery after COVID-19 varied across Austin-area ZIP codes. Most areas exceeded their 2019 baseline by 2025, but the degree of recovery was uneven across the city. Downtown and core ZIP codes such as 78701 experienced a sharp decline in 2020 and a slower rebound, reaching only about 1.1 times their 2019 sales level by 2025 after the initial drop. In contrast, several suburban and growth-area ZIP codes saw much stronger increases, including 78702, which more than doubled its pre-pandemic sales, along with strong increases in ZIP codes like 78719 and 78731.</p>
+<p>A smaller group of ZIP codes, including 78757, 78728 and 78750, remained slightly below or only near their pre-COVID levels by 2025, suggesting slower long-term recovery in parts of North and Northwest Austin. The data shows central Austin stabilizing at more moderate growth while several suburban and emerging areas experienced stronger post-pandemic expansion.</p>
 </section>
 <section id="establishment-recovery" class="level2">
 <h2 class="anchored" data-anchor-id="establishment-recovery">Establishment recovery</h2>
 <p>Seeing which establishments recovered the best.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>top_locations <span class="ot">&lt;-</span> bev_clean <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">!=</span> <span class="dv">2026</span>) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location_name, location_address, year) <span class="sc">|&gt;</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(total_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'location_name', 'location_address'. You
-can override using the `.groups` argument.</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>location_summary <span class="ot">&lt;-</span> top_locations <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location_name, location_address) <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sales_2019 =</span> total_sales[year <span class="sc">==</span> <span class="dv">2019</span>],</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sales_2020 =</span> total_sales[year <span class="sc">==</span> <span class="dv">2020</span>],</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sales_2025 =</span> total_sales[year <span class="sc">==</span> <span class="dv">2025</span>],</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(sales_2019),</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    sales_2019 <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(sales_2025)</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">recovery_2025 =</span> sales_2025 <span class="sc">/</span> sales_2019,</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">covid_drop =</span> sales_2020 <span class="sc">/</span> sales_2019</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
-dplyr 1.1.0.
-ℹ Please use `reframe()` instead.
-ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
-  always returns an ungrouped data frame and adjust accordingly.</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>location_summary <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(recovery_2025)) <span class="sc">|&gt;</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 7
-   location_name location_address sales_2019 sales_2020 sales_2025 recovery_2025
-   &lt;chr&gt;         &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;
- 1 RED ROSE      3615 S CONGRESS…       1597     917353    2275657        1425. 
- 2 MARAVILLA AT… 11001 AUSTIN LN          80       3395      27764         347. 
- 3 THE COUNTER … 603 W 29TH ST           260      20148      37487         144. 
- 4 PROPER HOTEL  600 W 2ND ST         103809    1968918   10756819         104. 
- 5 ALOFT AUSTIN… 8000 E BEN WHIT…       2288      29162     225589          98.6
- 6 THE SILVER M… 7100 E HIGHWAY …       6790     122731     385332          56.7
- 7 MALA VIDA     708 E 6TH ST          69377     501150    3361561          48.5
- 8 DOS SALSAS D… 11301 BURNET RD…      31026     969032    1119974          36.1
- 9 24 DINER      3600 PRESIDENTI…      43266     523066    1275869          29.5
-10 1618 ASIAN F… 1620 E RIVERSID…      48896     277705    1254311          25.7
-# ℹ 1 more variable: covid_drop &lt;dbl&gt;</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>top_locations <span class="ot">&lt;-</span> bev_clean <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">location_id =</span> <span class="fu">paste</span>(location_name, location_address)) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location_id, location_name, location_address, year) <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(total_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>location_summary <span class="ot">&lt;-</span> top_locations <span class="sc">|&gt;</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2019</span>, <span class="dv">2020</span>, <span class="dv">2025</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> year,</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> total_sales,</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"sales_"</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sales_2019), sales_2019 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">recovery_2025 =</span> sales_2025 <span class="sc">/</span> sales_2019,</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">covid_drop =</span> sales_2020 <span class="sc">/</span> sales_2019</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>location_summary <span class="sc">|&gt;</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(recovery_2025)) <span class="sc">|&gt;</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["location_id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["location_name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["location_address"],"name":[3],"type":["chr"],"align":["left"]},{"label":["sales_2019"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sales_2020"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["sales_2025"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["recovery_2025"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["covid_drop"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"RED ROSE 3615 S CONGRESS AVE","2":"RED ROSE","3":"3615 S CONGRESS AVE","4":"1597","5":"917353","6":"2275657","7":"1424.95742","8":"574.422668"},{"1":"MARAVILLA AT THE DOMAIN 11001 AUSTIN LN","2":"MARAVILLA AT THE DOMAIN","3":"11001 AUSTIN LN","4":"80","5":"3395","6":"27764","7":"347.05000","8":"42.437500"},{"1":"THE COUNTER CAFE 603 W 29TH ST","2":"THE COUNTER CAFE","3":"603 W 29TH ST","4":"260","5":"20148","6":"37487","7":"144.18077","8":"77.492308"},{"1":"PROPER HOTEL 600 W 2ND ST","2":"PROPER HOTEL","3":"600 W 2ND ST","4":"103809","5":"1968918","6":"10756819","7":"103.62126","8":"18.966737"},{"1":"ALOFT AUSTIN AIRPORT 8000 E BEN WHITE BLVD","2":"ALOFT AUSTIN AIRPORT","3":"8000 E BEN WHITE BLVD","4":"2288","5":"29162","6":"225589","7":"98.59659","8":"12.745629"},{"1":"THE SILVER MEDAL 7100 E HIGHWAY 290","2":"THE SILVER MEDAL","3":"7100 E HIGHWAY 290","4":"6790","5":"122731","6":"385332","7":"56.74993","8":"18.075258"},{"1":"MALA VIDA 708 E 6TH ST","2":"MALA VIDA","3":"708 E 6TH ST","4":"69377","5":"501150","6":"3361561","7":"48.45354","8":"7.223576"},{"1":"DOS SALSAS DOMAIN 11301 BURNET RD BLDG 1","2":"DOS SALSAS DOMAIN","3":"11301 BURNET RD BLDG 1","4":"31026","5":"969032","6":"1119974","7":"36.09792","8":"31.232901"},{"1":"24 DINER 3600 PRESIDENTIAL BLVD","2":"24 DINER","3":"3600 PRESIDENTIAL BLVD","4":"43266","5":"523066","6":"1275869","7":"29.48895","8":"12.089539"},{"1":"1618 ASIAN FUSION 1620 E RIVERSIDE DR STE 1618","2":"1618 ASIAN FUSION","3":"1620 E RIVERSIDE DR STE 1618","4":"48896","5":"277705","6":"1254311","7":"25.65263","8":"5.679503"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
-<p>Data Takeaway: Austin’s highest-grossing alcohol establishments showed different recovery patterns after the COVID-19 pandemic. Several places rebounded strongly by 2025 and even exceeded their pre-pandemic levels. Proper Hotel rose from about $104,000 in 2019 to $10.8 million in 2025, while Scoot Inn Concession Company increased from roughly $807,000 to $14.9 million over the same period.</p>
-<p>Other venues saw more moderate but still strong growth, including Mala Vida, which grew from about $69,000 to $3.36 million, and Aloft Austin Airport, which increased from about $2,300 to $225,000. In contrast, established venues such as Fairmont Austin Hotel and Buford’s recovered more slowly and remained closer to or below their 2019 levels by 2025.</p>
+</div>
+<p>Data Takeaway: The top-performing establishments in terms of recovery exceeded their 2019 sales by 2025, with several locations showing exponential growth rather than just recovery. A few businesses, such as Red Rose and Maravilla at the Domain, started from very low reported 2019 sales, which inflates their recovery ratios, but even established venues like Proper Hotel and Mala Vida posted substantial gains well above pre-pandemic levels.</p>
+<p>While most locations experienced a drop or disruption in 2020, the overall pattern shows that high-growth establishments not only rebounded but significantly expanded their sales in the years following, indicating strong post-pandemic demand and possible business expansion over time.</p>
 </section>
-<section id="alcohol-types-over-time" class="level2">
-<h2 class="anchored" data-anchor-id="alcohol-types-over-time">Alcohol types over time</h2>
-<p>Comparison of beer, wine, and liquor sales using 2019 as a baseline before, 2020 as sales drop baseline and 2025 as the recovery baseline.</p>
+<section id="summarize-yearly-totals-and-location-counts" class="level2">
+<h2 class="anchored" data-anchor-id="summarize-yearly-totals-and-location-counts">Summarize yearly totals and location counts</h2>
+<p>Summarizing total sales and number of reporting locations each year.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>drink_trends <span class="ot">&lt;-</span> bev_clean <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">!=</span> <span class="dv">2026</span>) <span class="sc">|&gt;</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">beer =</span> <span class="fu">sum</span>(beer_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">wine =</span> <span class="fu">sum</span>(wine_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">liquor =</span> <span class="fu">sum</span>(liquor_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>drink_trends</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7 × 4
-   year      beer      wine    liquor
-  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1  2019 227256019 142754707 510077953
-2  2020  96370482  67906971 260427020
-3  2021 188500896 119350228 548370408
-4  2022 253704639 156698765 715143266
-5  2023 269912334 158425895 745801387
-6  2024 270134398 152443541 725645363
-7  2025 267447638 156026067 711759279</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>year_summary <span class="ot">&lt;-</span> bev_clean <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(total_receipts, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">num_locations =</span> <span class="fu">n_distinct</span>(<span class="fu">paste</span>(location_name, location_address))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>year_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["total_sales"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["num_locations"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2019","2":"882805713","3":"1232"},{"1":"2020","2":"425970744","3":"1246"},{"1":"2021","2":"858982905","3":"1316"},{"1":"2022","2":"1137123564","3":"1383"},{"1":"2023","2":"1180243932","3":"1465"},{"1":"2024","2":"1154925774","3":"1540"},{"1":"2025","2":"1143640701","3":"1627"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
-<p>Data Takeaway: All three alcohols dropped sharply in 2020, but recovered by 2021 and continued to grow through 2025. Beer and liquor showed the strongest post-COVID growth, while wine remained the smallest and most stable category over time.</p>
-<p>note to self: is this worth it to include? no strong conclusions that i can tie back to my original question</p>
+</div>
+<p>Data Takeaway: As the number of locations steadily increased each year, total alcohol sales also rose after the 2020 drop, suggesting a positive relationship between market growth and overall sales. However, sales began to level off after 2023 even as locations continued to increase, indicating that growth in new establishments did not translate into the same pace of sales growth.</p>
+</section>
+<section id="new-vs-existing-establishments" class="level2">
+<h2 class="anchored" data-anchor-id="new-vs-existing-establishments">New vs existing establishments</h2>
+<p>Identifying when establishments first appear in the dataset to understand whether newer locations are contributing to growth.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>location_first_year <span class="ot">&lt;-</span> bev_clean <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location_name, location_address) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">first_year =</span> <span class="fu">min</span>(year)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'location_name'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>new_locations_by_year <span class="ot">&lt;-</span> location_first_year <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(first_year, <span class="at">name =</span> <span class="st">"num_new_locations"</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>new_locations_by_year</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["first_year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["num_new_locations"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"2019","2":"1232"},{"1":"2020","2":"95"},{"1":"2021","2":"134"},{"1":"2022","2":"147"},{"1":"2023","2":"157"},{"1":"2024","2":"173"},{"1":"2025","2":"212"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Data Takeaway: Most establishments in the dataset were already operating in 2019, but there has been a steady increase in new locations every year since 2020, with new openings accelerating through 2025. This aligns with earlier takeaways showing that while total sales recovered quickly after the pandemic, the continued growth in later years is increasingly driven by new establishments entering the market rather than just existing businesses bouncing back.</p>
+<p>Acknowledgement of outside help: dyplyr website explained usage of n_distinct</p>
 
 
 </section>
